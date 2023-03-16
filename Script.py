@@ -8,6 +8,4 @@ def RANDOM(num:int=32)->str:
 def LoadModules(PATH:"Folder's path")->list:
     #Get all the py module files in the folder.
     #Note that this function will get all the py files under the path, including subfolders.
-    ModuleList=[]
-    [ModuleList.append(os.path.join(root,file).replace(PATH,"").replace(".py","").replace("\\",".")) for root,dirs,files in os.walk(PATH) for file in files if file.endswith(".py")]
-    return ModuleList
+    return [os.path.join(root,file).replace(PATH,"").replace(".py","").replace("\\",".") for root,dirs,files in os.walk(PATH) for file in files if file.endswith(".py")]
