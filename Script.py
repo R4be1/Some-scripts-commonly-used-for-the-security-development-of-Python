@@ -10,3 +10,7 @@ def LoadModules(PATH:"Folder's path")->list:
     #Note that this function will get all the py files under the path, including subfolders.
     import os
     return [os.path.join(root,file).replace(PATH,"").replace(".py","").replace("\\",".") for root,dirs,files in os.walk(PATH) for file in files if file.endswith(".py")]
+
+def URL(url):
+    url=url if url.startswith("http://") or url.startswith("https://") else "http://"+url
+    return url
