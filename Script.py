@@ -14,3 +14,14 @@ def LoadModules(PATH:"Folder's path")->list:
 def URL(url):
     url=url if url.startswith("http://") or url.startswith("https://") else "http://"+url
     return url
+
+def Parameter(para):
+    if para in sys.argv:
+        para=sys.argv.index(para)
+        para=sys.argv[para+1] if len(sys.argv) > para+1 else None
+        return para
+
+def GetTitle(text):
+    match = re.search(r'<title.*?>(.+?)</title>', text)
+    if match: return match.group(1)
+    else: return str()
